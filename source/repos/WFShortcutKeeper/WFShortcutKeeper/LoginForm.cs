@@ -49,8 +49,8 @@ namespace WFShortcutKeeper
             if (successfulLog)
             {
                 MessageBox.Show("Ви увійшли у систему");
-                main.Show();
                 this.Hide();
+                main.Show();
             }
             else
                 MessageBox.Show("Неправильний логін або пароль");
@@ -64,7 +64,6 @@ namespace WFShortcutKeeper
 
         private void SuccessfulLogin(User user, ref bool succ)
         {
-
             succ = true;
             main = new CutsForm(user);
         }

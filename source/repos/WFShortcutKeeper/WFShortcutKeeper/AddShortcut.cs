@@ -16,6 +16,7 @@ namespace WFShortcutKeeper
         User user;
         CutsForm cutsform;
         Point lastPoint;
+        string key = "trambovetsky";
         private void ExitLabel_Click(object sender, EventArgs e)
         {
             cutsform.Enabled = true;
@@ -31,9 +32,11 @@ namespace WFShortcutKeeper
 
             using (EFDbContext db = new EFDbContext())
             {
-                db.Shortcuts.Add(new Entities.Shortcut() { Link = CypherClass.XORCipher(link, "trambovetsky"), Desc = CypherClass.XORCipher(description, "trambovetsky"), UserId = user.Id});
+                db.Shortcuts.Add(new Entities.Shortcut() { Link = CypherClass.XORCipher(link, key), Desc = CypherClass.XORCipher(description, key), UserId = user.Id});
                 db.SaveChanges();
             }
+            cutsform.Enabled = true;
+            cutsform.Dispose();
             this.Hide();
             CutsForm cutsf = new CutsForm(user);
             cutsf.Show();
